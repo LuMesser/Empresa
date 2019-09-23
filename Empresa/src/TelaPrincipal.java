@@ -63,11 +63,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(115, 115, 115)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(78, 78, 78)
                         .addComponent(jButton1)
-                        .addGap(55, 55, 55)
+                        .addGap(45, 45, 45)
                         .addComponent(jButton2)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

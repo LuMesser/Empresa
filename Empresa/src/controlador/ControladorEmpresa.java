@@ -26,6 +26,8 @@ public class ControladorEmpresa {
         Empresa objeto = new Empresa();
         objeto.setNomefantasia(man.jtfNomefantasia.getText());
         objeto.setRazaosocial(man.jtfRazaosocial.getText());
+        objeto.setDtfundacao(man.jtfDtfundacao.getText());
+        objeto.setHrabertura(man.jtfHrabertura.getText());
         
         boolean resultado = DaoEmpresa.inserir(objeto);
         if (resultado) {
@@ -47,6 +49,8 @@ man.dispose();//fechar a tela da manutenção
         objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText()));
         objeto.setNomefantasia(man.jtfNomefantasia.getText());
         objeto.setRazaosocial(man.jtfRazaosocial.getText());
+        objeto.setDtfundacao(man.jtfDtfundacao.getText());
+        objeto.setHrabertura(man.jtfHrabertura.getText());
         
         boolean resultado = DaoEmpresa.alterar(objeto);
         if (resultado) {
@@ -83,6 +87,8 @@ man.dispose();//fechar a tela da manutenção
         modelo.addColumn("Código");
         modelo.addColumn("Nome fantasia");
         modelo.addColumn("Razão social");
+        modelo.addColumn("Data de fundação");
+        modelo.addColumn("Hora de abertura");
         List<Empresa> resultados = DaoEmpresa.consultar();
         for (Empresa objeto : resultados) {
             Vector linha = new Vector();
@@ -101,6 +107,8 @@ man.dispose();//fechar a tela da manutenção
         man.jtfCodigo.setText(objeto.getCodigo().toString());
         man.jtfNomefantasia.setText(objeto.getNomefantasia());
         man.jtfRazaosocial.setText(objeto.getRazaosocial());
+        man.jtfDtfundacao.setText(objeto.getDtfundacao());
+        man.jtfHrabertura.setText(objeto.getHrabertura());
         
         man.jtfCodigo.setEnabled(false); //desabilitando o campo código
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar

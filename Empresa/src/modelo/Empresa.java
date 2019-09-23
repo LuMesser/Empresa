@@ -13,12 +13,14 @@ public class Empresa {
     private Integer codigo;
     private String nomefantasia;
     private String razaosocial;
+    private String dtfundacao;
+    private String hrabertura;
 
     public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
@@ -37,6 +39,24 @@ public class Empresa {
     public void setRazaosocial(String razaosocial) {
         this.razaosocial = razaosocial;
     }
+
+    public String getDtfundacao() {
+        return dtfundacao;
+    }
+
+    public void setDtfundacao(String dtfundacao) {
+        this.dtfundacao = dtfundacao;
+    }
+
+    public String getHrabertura() {
+        return hrabertura;
+    }
+
+    public void setHrabertura(String hrabertura) {
+        this.hrabertura = hrabertura;
+    }
+
+ 
 
     @Override
     public String toString() {

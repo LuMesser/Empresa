@@ -18,11 +18,13 @@ import java.util.List;
  */
 public class DaoEmpresa {
      public static boolean inserir(Empresa objeto) {
-        String sql = "INSERT INTO empresa (nomefantasia, razaosocial) VALUES (?, ?)";
+        String sql = "INSERT INTO empresa (nomefantasia, razaosocial, dtfundacao, hrabertura) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getNomefantasia());
             ps.setString(2, objeto.getRazaosocial());
+            ps.setString(3, objeto.getDtfundacao());
+            ps.setString(4, objeto.getHrabertura());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -34,6 +36,8 @@ public class DaoEmpresa {
         Empresa objeto = new Empresa();
         objeto.setNomefantasia("Brandt Store");
         objeto.setRazaosocial("Brandt Store");
+        objeto.setDtfundacao("10/12/2003");
+        objeto.setHrabertura("8:00");
         
         boolean resultado = inserir(objeto);
         if (resultado) {
@@ -43,12 +47,14 @@ public class DaoEmpresa {
         }
     }
        public static boolean alterar(Empresa objeto) {
-        String sql = "UPDATE empresa SET nomefantasia = ?, razaosocial = ? WHERE codigo=?";
+        String sql = "UPDATE empresa SET nomefantasia = ?, razaosocial = ?, dtfundacao = ?, hrabertura = ? WHERE codigo=?";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getNomefantasia()); 
             ps.setString(2, objeto.getRazaosocial());
-            ps.setInt(3, objeto.getCodigo());
+            ps.setString(3, objeto.getDtfundacao());
+            ps.setString(4, objeto.getHrabertura());
+            ps.setInt(5, objeto.getCodigo());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -71,7 +77,7 @@ public class DaoEmpresa {
        public static List<Empresa> consultar() {
         List<Empresa> resultados = new ArrayList<>();
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, nomefantasia, razaosocial FROM empresa";
+        String sql = "SELECT codigo, nomefantasia, razaosocial, dtfundacao, hrabertura FROM empresa";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -82,6 +88,8 @@ public class DaoEmpresa {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNomefantasia(rs.getString("nomefantasia"));
                 objeto.setRazaosocial(rs.getString("razaosocial"));
+                objeto.setDtfundacao(rs.getString("dtfundacao"));
+                objeto.setHrabertura(rs.getString("hrabertura"));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
             }
@@ -93,7 +101,7 @@ public class DaoEmpresa {
 }
        public static Empresa consultar(int primaryKey) {
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, nomefantasia, razaosocial FROM empresa WHERE codigo=?";
+        String sql = "SELECT codigo, nomefantasia, razaosocial, dtfundacao, hrabertura FROM empresa WHERE codigo=?";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -105,6 +113,8 @@ public class DaoEmpresa {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNomefantasia(rs.getString("nomefantasia"));
                 objeto.setRazaosocial(rs.getString("razaosocial"));
+                objeto.setDtfundacao(rs.getString("dtfundacao"));
+                objeto.setHrabertura(rs.getString("hrabertura"));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {
